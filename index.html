@@ -85,7 +85,12 @@
 
 
         Telegram.WebApp.onEvent("mainButtonClicked", () => {
-            tg.sendData(item, tariff_name);
+            let data = {
+                item_id: item,
+                tariff: tariff_name
+            }
+
+            tg.sendData(JSON.stringify(data));
         });
 
 
