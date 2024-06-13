@@ -3,40 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Тарифы</title>
-    <link rel="stylesheet" href="styles.css">
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
 </head>
 <body>
-    <header>
-        <h1>Выберите свой тариф</h1>
-    </header>
-    <main>
-        <div class="tariff-container">
-            <button class="tariff-btn" id="btn1">Базовый</button>
-            <button class="tariff-btn" id="btn2">Стандартный</button>
-            <button class="tariff-btn" id="btn3">Премиум</button>
+    <div class="container">
+        <div class="inner">
+            <div class="item">
+                <button class="btn basic" id="btn1">
+                    <span class="tariff-name">Базовый</span><br>
+                    <span class="tariff-price">100₽</span>
+                </button>
+            </div>
+            <div class="item">
+                <button class="btn standard" id="btn2">
+                    <span class="tariff-name">Стандартный</span><br>
+                    <span class="tariff-price">200₽</span>
+                </button>
+            </div>
+            <div class="item">
+                <button class="btn premium" id="btn3">
+                    <span class="tariff-name">Премиум</span><br>
+                    <span class="tariff-price">300₽</span>
+                </button>
+            </div>
         </div>
+    </div>
+    <div class="usercard" id="usercard">
+        <!-- User card content -->
+    </div>
+    <script>
+        let tg = window.Telegram.WebApp;
 
-        <script>
-            let tg = window.Telegram.WebApp;
-            let tariff_1 = document.getElementById("btn1");
-            let tariff_2 = document.getElementById("btn2");
-            let tariff_3 = document.getElementById("btn3");
+        tg.MainButton.textColor = '#FFFFFF';
+        tg.MainButton.color = '#2cab37';
+
+        let item = "";
+        let tariff_1 = document.getElementById("btn1");
+        let tariff_2 = document.getElementById("btn2");
+        let tariff_3 = document.getElementById("btn3");
 
 
-            tariff_1.addEventListener("click", () => {
-                tg.close();
-            })
 
-            tariff_2.addEventListener("click", () => {
-                tg.close();
-            })
+        tariff_1.addEventListener("click", () => {
+            if (tg.MainButton.isVisible) {
+                tg.MainButton.hide();
+            }
+            else {
+                tg.MainButton.setText("Вы выбрали тариф Базовый!");
+                item = "1";
+                tg.MainButton.show();
+            }
+        });
 
-            tariff_3.addEventListener("click", () => {
-                tg.close();
-            })
-        </script>
-    </main>
+        tariff_2.addEventListener("click", function(){
+            if (tg.MainButton.isVisible) {
+                tg.MainButton.hide();
+            }
+            else {
+                tg.MainButton.setText("Вы выбрали тариф Стандартный!");
+                item = "2";
+                tg.MainButton.show();
+            }
+        });
+
+        tariff_3.addEventListener("click", function(){
+            if (tg.MainButton.isVisible) {
+                tg.MainButton.hide();
+            }
+            else {
+                tg.MainButton.setText("Вы выбрали тариф Премиум!");
+                item = "3";
+                tg.MainButton.show();
+            }
+        });
+
+
+        Telegram.WebApp.onEvent("mainButtonClicked", () => {
+            tg.sendData(item);
+        });
+
+
+        // let usercard = document.getElementById("usercard");
+        //
+        // let p = document.createElement("p");
+        //
+        // p.innerText = `${tg.initDataUnsafe.user.first_name}
+        // ${tg.initDataUnsafe.user.last_name}`;
+        //
+        // usercard.appendChild(p);
+    </script>
 </body>
 </html>

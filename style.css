@@ -1,56 +1,70 @@
-/* Стили для базовых элементов */
 body {
-    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    font-size: 18px;
+    color: var(--tg-theme-text-color);
+    background: var(--tg-theme-bg-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    max-width: 390px;
+    width: 100%;
+}
+
+.inner {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    align-items: center;
+}
+
+.item {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.btn {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh;
-    margin: 0;
-    background-color: #f4f4f4;
-}
-
-/* Стили для заголовка */
-header {
-    margin-bottom: 20px;
-}
-
-header h1 {
-    font-size: 2em;
-    color: #333;
-}
-
-/* Контейнер для тарифных кнопок */
-.tariff-container {
-    display: flex;
-    gap: 15px;
-}
-
-/* Стили для кнопок тарифов */
-.tariff-btn {
-    padding: 15px 25px;
-    font-size: 1em;
+    padding: 20px;
     border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s, color 0.3s;
+    background: rgb(248, 168, 24);
+    border-radius: 10px;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 1.2em;
+    width: 100%;
+    max-width: 350px;
+    height: 100px;
+    transition: background 0.2s linear;
+    white-space: normal;
 }
 
-.tariff-btn:nth-child(1) {
-    background-color: #4CAF50; /* Зеленый для базового тарифа */
-    color: white;
+.btn:hover {
+    background: lightgreen;
 }
 
-.tariff-btn:nth-child(2) {
-    background-color: #2196F3; /* Синий для стандартного тарифа */
-    color: white;
+.usercard {
+    text-align: center;
+    margin-top: 20px;
 }
 
-.tariff-btn:nth-child(3) {
-    background-color: #f44336; /* Красный для премиум тарифа */
-    color: white;
+.tariff-name {
+    font-size: 1.2em;
 }
 
-.tariff-btn:hover {
-    opacity: 0.8;
+.tariff-price {
+    font-size: 1.5em;
+    font-weight: bold;
 }
