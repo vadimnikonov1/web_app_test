@@ -13,16 +13,17 @@
     </header>
     <main>
         <div class="tariff-container">
-            <button class="tariff-btn-1">Базовый</button>
-            <button class="tariff-btn-2">Стандартный</button>
-            <button class="tariff-btn-3">Премиум</button>
+            <button class="tariff-btn" id="btn1">Базовый</button>
+            <button class="tariff-btn" id="btn2">Стандартный</button>
+            <button class="tariff-btn" id="btn3">Премиум</button>
         </div>
 
         <script>
             let tg = window.Telegram.WebApp;
-            let tariff_1 = document.getElementsByClassName("tariff-btn-1");
-            let tariff_2 = document.getElementsByClassName("tariff-btn-2");
-            let tariff_3 = document.getElementsByClassName("tariff-btn-3");
+            let tariff_1 = document.getElementById("btn1");
+            let tariff_2 = document.getElementById("btn2");
+            let tariff_3 = document.getElementById("btn3");
+
 
             tariff_1.addEventListener("click", () => {
                 tg.close();
