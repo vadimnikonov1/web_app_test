@@ -40,6 +40,7 @@
         tg.MainButton.color = '#2cab37';
 
         let item = "";
+        let tariff_name = "";
         let tariff_1 = document.getElementById("btn1");
         let tariff_2 = document.getElementById("btn2");
         let tariff_3 = document.getElementById("btn3");
@@ -53,6 +54,7 @@
             else {
                 tg.MainButton.setText("Вы выбрали тариф Базовый!");
                 item = "1";
+                tariff_name = 'Тариф "Базовый"';
                 tg.MainButton.show();
             }
         });
@@ -64,6 +66,7 @@
             else {
                 tg.MainButton.setText("Вы выбрали тариф Стандартный!");
                 item = "2";
+                tariff_name = 'Тариф "Стандартный"';
                 tg.MainButton.show();
             }
         });
@@ -75,13 +78,14 @@
             else {
                 tg.MainButton.setText("Вы выбрали тариф Премиум!");
                 item = "3";
+                tariff_name = 'Тариф "Премиум"';
                 tg.MainButton.show();
             }
         });
 
 
         Telegram.WebApp.onEvent("mainButtonClicked", () => {
-            tg.sendData(item);
+            tg.sendData(item, tariff_name);
         });
 
 
