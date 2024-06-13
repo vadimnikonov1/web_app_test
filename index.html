@@ -17,24 +17,25 @@
             <button class="tariff-btn-2">Стандартный</button>
             <button class="tariff-btn-3">Премиум</button>
         </div>
+
+        <script>
+            let tg = window.Telegram.WebApp;
+            let tariff_1 = document.getElementById("tariff-btn-1");
+            let tariff_2 = document.getElementById("tariff-btn-2");
+            let tariff_3 = document.getElementById("tariff-btn-3");
+
+            tariff_1.addEventListener("click", () => {
+                tg.close();
+            })
+
+            tariff_2.addEventListener("click", () => {
+                tg.close();
+            })
+
+            tariff_3.addEventListener("click", () => {
+                tg.close();
+            })
+        </script>
     </main>
-    <script>
-        let tg = window.Telegram.WebApp;
-        let tariff_1 = document.getElementById("tariff-btn-1");
-        let tariff_2 = document.getElementById("tariff-btn-2");
-        let tariff_3 = document.getElementById("tariff-btn-3");
-
-        tariff_1.addEventListener("click", () => {
-            tg.close();
-        })
-
-        tariff_2.addEventListener("click", () => {
-            tg.close();
-        })
-
-        tariff_3.addEventListener("click", () => {
-            tg.close();
-        })
-    </script>
 </body>
 </html>
