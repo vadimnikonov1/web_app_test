@@ -1,0 +1,56 @@
+/* Стили для базовых элементов */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f4f4f4;
+}
+
+/* Стили для заголовка */
+header {
+    margin-bottom: 20px;
+}
+
+header h1 {
+    font-size: 2em;
+    color: #333;
+}
+
+/* Контейнер для тарифных кнопок */
+.tariff-container {
+    display: flex;
+    gap: 15px;
+}
+
+/* Стили для кнопок тарифов */
+.tariff-btn {
+    padding: 15px 25px;
+    font-size: 1em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.tariff-btn:nth-child(1) {
+    background-color: #4CAF50; /* Зеленый для базового тарифа */
+    color: white;
+}
+
+.tariff-btn:nth-child(2) {
+    background-color: #2196F3; /* Синий для стандартного тарифа */
+    color: white;
+}
+
+.tariff-btn:nth-child(3) {
+    background-color: #f44336; /* Красный для премиум тарифа */
+    color: white;
+}
+
+.tariff-btn:hover {
+    opacity: 0.8;
+}
