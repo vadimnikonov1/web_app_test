@@ -20,9 +20,9 @@
 
         <script>
             let tg = window.Telegram.WebApp;
-            let tariff_1 = document.getElementById("tariff-btn-1");
-            let tariff_2 = document.getElementById("tariff-btn-2");
-            let tariff_3 = document.getElementById("tariff-btn-3");
+            let tariff_1 = document.getElementsByClassName("tariff-btn-1");
+            let tariff_2 = document.getElementsByClassName("tariff-btn-2");
+            let tariff_3 = document.getElementsByClassName("tariff-btn-3");
 
             tariff_1.addEventListener("click", () => {
                 tg.close();
