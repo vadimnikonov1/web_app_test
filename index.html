@@ -92,18 +92,18 @@
                 item_id: item,
                 tariff: tariff_name
             }
-            let invoice_data = {
-        "title": "Тариф" + tariff_name,
-        "description": "Оплата за тариф" + tariff_name,
-        "payload": "test-invoice-payload",
-        "provider_token": "401643678:TEST:2cd5739f-8274-4b9d-8736-8cdf404944a5",
-        "currency": "RUB",
-        "prices": item_price,
-        "start_parameter": "test-invoice"
-            }
+        //     let invoice_data = {
+        // "title": "Тариф" + tariff_name,
+        // "description": "Оплата за тариф" + tariff_name,
+        // "payload": "test-invoice-payload",
+        // "provider_token": "401643678:TEST:2cd5739f-8274-4b9d-8736-8cdf404944a5",
+        // "currency": "RUB",
+        // "prices": item_price,
+        // "start_parameter": "test-invoice"
+        //     }
 
-            tg.openInvoice(invoice_data)
-            // tg.sendData(JSON.stringify(data));
+            // tg.openInvoice(invoice_data)
+            tg.sendData(JSON.stringify(data));
         });
 
 
