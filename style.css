@@ -44,7 +44,7 @@ body {
     text-transform: uppercase;
     font-weight: 700;
     font-size: 1.2em;
-    width: 100%;
+    width: calc(100% - 40px); /* Уменьшил ширину на 40px для учета padding */
     max-width: 350px;
     height: 100px;
     transition: background 0.2s linear;
