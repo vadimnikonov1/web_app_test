@@ -87,7 +87,7 @@
             button.addEventListener('click', function() {
                 const tariffName = this.querySelector('.tariff-name').textContent;
                 const tariffPrice = this.querySelector('.tariff-price').textContent;
-                item = this.id.replace('stars', '').replace('card', '');
+                item = this.id;
                 tariff_name = `Тариф "${tariffName}"`;
                 item_price = tariffPrice;
                 payment_type = this.classList.contains('stars') ? 'Telegram Stars' : 'Банковская карта';
