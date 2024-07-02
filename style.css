@@ -7,12 +7,13 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 80vh;
+    min-height: 100vh; /* Изменил высоту контейнера на 100vh для полного заполнения экрана */
 }
 
 .container {
-    max-width: 240px;
+    max-width: 600px;
     width: 100%;
+    margin-top: 20px;
 }
 
 .inner {
@@ -21,6 +22,7 @@ body {
     gap: 20px;
     width: 100%;
     align-items: center;
+    text-align: center; /* Добавлено центрирование для текста внутри .inner */
 }
 
 .item {
@@ -33,22 +35,20 @@ body {
 
 .btn {
     display: flex;
-    flex-direction: column;
-    align-items: center;
     justify-content: center;
-    padding: 20px;
+    align-items: center;
+    padding: 15px 20px;
     border: none;
     background: rgb(248, 168, 24);
     border-radius: 10px;
     color: #fff;
     text-transform: uppercase;
     font-weight: 700;
-    font-size: 1.2em;
-    width: calc(100% - 40px); /* Уменьшил ширину на 40px для учета padding */
+    font-size: 1em;
+    width: calc(100% - 40px);
     max-width: 240px;
     height: 80px;
     transition: background 0.2s linear;
-    white-space: normal;
 }
 
 .btn:hover {
@@ -60,11 +60,19 @@ body {
     margin-top: 20px;
 }
 
-.tariff-name {
-    font-size: 1.2em;
+.section-title {
+    font-size: 1.2em; /* Увеличил размер заголовка */
+    margin-bottom: 10px; /* Добавил отступ снизу для разделения заголовка от кнопок */
 }
 
-.tariff-price {
-    font-size: 1.5em;
-    font-weight: bold;
+.tariff-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.9em;
+}
+
+.tariff-name, .tariff-price {
+    display: block;
 }

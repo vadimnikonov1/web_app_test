@@ -1,195 +1,3 @@
-<!--<!DOCTYPE html>-->
-<!--<html lang="en">-->
-<!--<head>-->
-<!--    <meta charset="UTF-8">-->
-<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
-<!--    <link rel="stylesheet" href="style.css">-->
-<!--    <title>Тарифы</title>-->
-<!--    <script src="https://telegram.org/js/telegram-web-app.js"></script>-->
-<!--</head>-->
-<!--<body>-->
-<!--    <div class="container">-->
-<!--        <div class="inner">-->
-<!--            <div class="item">-->
-<!--                <button class="btn basic" id="btn1">-->
-<!--                    <span class="tariff-name">Базовый</span><br>-->
-<!--                    <span class="tariff-price">100₽</span>-->
-<!--                </button>-->
-<!--            </div>-->
-<!--            <div class="item">-->
-<!--                <button class="btn standard" id="btn2">-->
-<!--                    <span class="tariff-name">Стандартный</span><br>-->
-<!--                    <span class="tariff-price">200₽</span>-->
-<!--                </button>-->
-<!--            </div>-->
-<!--            <div class="item">-->
-<!--                <button class="btn premium" id="btn3">-->
-<!--                    <span class="tariff-name">Премиум</span><br>-->
-<!--                    <span class="tariff-price">300₽</span>-->
-<!--                </button>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--    <div class="usercard" id="usercard">-->
-<!--        &lt;!&ndash; User card content &ndash;&gt;-->
-<!--    </div>-->
-<!--    <script>-->
-<!--        let tg = window.Telegram.WebApp;-->
-
-<!--        tg.MainButton.textColor = '#FFFFFF';-->
-<!--        tg.MainButton.color = '#2cab37';-->
-
-<!--        let item = "";-->
-<!--        let tariff_name = "";-->
-<!--        let tariff_1 = document.getElementById("btn1");-->
-<!--        let tariff_2 = document.getElementById("btn2");-->
-<!--        let tariff_3 = document.getElementById("btn3");-->
-
-
-
-<!--        tariff_1.addEventListener("click", () => {-->
-<!--            if (tg.MainButton.isVisible) {-->
-<!--                tg.MainButton.hide();-->
-<!--            }-->
-<!--            else {-->
-<!--                tg.MainButton.setText("Вы выбрали тариф Базовый!");-->
-<!--                item = "1";-->
-<!--                item_price = 100000;-->
-<!--                tariff_name = 'Тариф "Базовый"';-->
-<!--                tg.MainButton.show();-->
-<!--            }-->
-<!--        });-->
-
-<!--        tariff_2.addEventListener("click", function(){-->
-<!--            if (tg.MainButton.isVisible) {-->
-<!--                tg.MainButton.hide();-->
-<!--            }-->
-<!--            else {-->
-<!--                tg.MainButton.setText("Вы выбрали тариф Стандартный!");-->
-<!--                item = "2";-->
-<!--                item_price = 200000;-->
-<!--                tariff_name = 'Тариф "Стандартный"';-->
-<!--                tg.MainButton.show();-->
-<!--            }-->
-<!--        });-->
-
-<!--        tariff_3.addEventListener("click", function(){-->
-<!--            if (tg.MainButton.isVisible) {-->
-<!--                tg.MainButton.hide();-->
-<!--            }-->
-<!--            else {-->
-<!--                tg.MainButton.setText("Вы выбрали тариф Премиум!");-->
-<!--                item = "3";-->
-<!--                item_price = 300000;-->
-<!--                tariff_name = 'Тариф "Премиум"';-->
-<!--                tg.MainButton.show();-->
-<!--            }-->
-<!--        });-->
-
-
-<!--        Telegram.WebApp.onEvent("mainButtonClicked", () => {-->
-<!--            let data = {-->
-<!--                item_id: item,-->
-<!--                tariff: tariff_name-->
-<!--            }-->
-<!--        //     let invoice_data = {-->
-<!--        // "title": "Тариф" + tariff_name,-->
-<!--        // "description": "Оплата за тариф" + tariff_name,-->
-<!--        // "payload": "test-invoice-payload",-->
-<!--        // "provider_token": "401643678:TEST:2cd5739f-8274-4b9d-8736-8cdf404944a5",-->
-<!--        // "currency": "RUB",-->
-<!--        // "prices": item_price,-->
-<!--        // "start_parameter": "test-invoice"-->
-<!--        //     }-->
-
-<!--            // tg.openInvoice(invoice_data)-->
-<!--            tg.sendData(item);-->
-<!--        });-->
-
-<!--    </script>-->
-<!--</body>-->
-<!--</html>-->
-
-
-<!--<!DOCTYPE html>-->
-<!--<html lang="en">-->
-<!--<head>-->
-<!--    <meta charset="UTF-8">-->
-<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
-<!--    <link rel="stylesheet" href="style.css">-->
-<!--    <title>Тарифы</title>-->
-<!--    <script src="https://telegram.org/js/telegram-web-app.js"></script>-->
-<!--</head>-->
-<!--<body>-->
-<!--    <div class="container">-->
-<!--        <div class="inner">-->
-<!--            <div class="item">-->
-<!--                <button class="btn basic" id="btn1" data-link="https://t.me/$w55lMql6IUT6AAAAtE1uV4XlW70">-->
-<!--                    <span class="tariff-name">Базовый</span><br>-->
-<!--                    <span class="tariff-price">100₽</span>-->
-<!--                </button>-->
-<!--            </div>-->
-<!--            <div class="item">-->
-<!--                <button class="btn standard" id="btn2" data-link="https://t.me/$w55lMql6IUT6AAAAtE1uV4XlW70">-->
-<!--                    <span class="tariff-name">Стандартный</span><br>-->
-<!--                    <span class="tariff-price">200₽</span>-->
-<!--                </button>-->
-<!--            </div>-->
-<!--            <div class="item">-->
-<!--                <button class="btn premium" id="btn3" data-link="https://t.me/$w55lMql6IUT6AAAAtE1uV4XlW70">-->
-<!--                    <span class="tariff-name">Премиум</span><br>-->
-<!--                    <span class="tariff-price">300₽</span>-->
-<!--                </button>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--    <div class="usercard" id="usercard">-->
-<!--        &lt;!&ndash; User card content &ndash;&gt;-->
-<!--    </div>-->
-<!--    <script>-->
-<!--        let tg = window.Telegram.WebApp;-->
-
-<!--        tg.MainButton.textColor = '#FFFFFF';-->
-<!--        tg.MainButton.color = '#2cab37';-->
-
-<!--        let item = "";-->
-<!--        let tariff_name = "";-->
-<!--        let item_price = 0;-->
-
-<!--        const tariffButtons = document.querySelectorAll('.btn');-->
-
-<!--        tariffButtons.forEach(button => {-->
-<!--            button.addEventListener('click', function() {-->
-<!--                const link = this.getAttribute('data-link');-->
-
-<!--                if (tg.MainButton.isVisible) {-->
-<!--                    tg.MainButton.hide();-->
-<!--                } else {-->
-<!--                    tg.MainButton.setText(`Вы выбрали тариф ${this.querySelector('.tariff-name').textContent}!`);-->
-<!--                    item = this.id.replace('btn', '');-->
-<!--                    item_price = parseInt(this.querySelector('.tariff-price').textContent) * 1000; // Преобразуем цену в копейки-->
-<!--                    tariff_name = `Тариф "${this.querySelector('.tariff-name').textContent}"`;-->
-<!--                    tg.MainButton.show();-->
-<!--                }-->
-
-<!--                tg.onEvent('mainButtonClicked', () => {-->
-<!--                    window.open(link, '_blank'); // Открываем ссылку в новой вкладке-->
-<!--                });-->
-<!--            });-->
-<!--        });-->
-
-<!--        Telegram.WebApp.onEvent("mainButtonClicked", () => {-->
-<!--            let data = {-->
-<!--                item_id: item,-->
-<!--                tariff: tariff_name-->
-<!--            };-->
-<!--            // tg.sendData(JSON.stringify(data));-->
-<!--        });-->
-<!--    </script>-->
-<!--</body>-->
-<!--</html>-->
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -204,21 +12,27 @@
         <h2>Покупка через Telegram Stars</h2>
         <div class="inner">
              <div class="item">
-                <button class="btn card" id="stars1" data-link="https://example.com/basic">
-                    <span class="tariff-name">Базовый</span><br>
-                    <span class="tariff-price">1⭐</span>
+                <button class="btn stars" id="stars1" data-link="https://example.com/basic">
+                    <span class="tariff-info">
+                        <span class="tariff-name">Базовый</span>
+                        <span class="tariff-price">1⭐</span>
+                    </span>
                 </button>
             </div>
             <div class="item">
-                <button class="btn card" id="stars2" data-link="https://example.com/standard">
-                    <span class="tariff-name">Стандартный</span><br>
-                    <span class="tariff-price">2⭐</span>
+                <button class="btn stars" id="stars2" data-link="https://example.com/standard">
+                    <span class="tariff-info">
+                        <span class="tariff-name">Стандартный</span>
+                        <span class="tariff-price">2⭐</span>
+                    </span>
                 </button>
             </div>
             <div class="item">
-                <button class="btn card" id="stars3" data-link="https://example.com/premium">
-                    <span class="tariff-name">Премиум</span><br>
-                    <span class="tariff-price">3⭐</span>
+                <button class="btn stars" id="stars3" data-link="https://example.com/premium">
+                    <span class="tariff-info">
+                        <span class="tariff-name">Премиум</span>
+                        <span class="tariff-price">3⭐</span>
+                    </span>
                 </button>
             </div>
         </div>
@@ -227,20 +41,26 @@
         <div class="inner">
             <div class="item">
                 <button class="btn card" id="card1" data-link="https://example.com/basic">
-                    <span class="tariff-name">Базовый</span><br>
-                    <span class="tariff-price">$5</span>
+                    <span class="tariff-info">
+                        <span class="tariff-name">Базовый</span>
+                        <span class="tariff-price">$5</span>
+                    </span>
                 </button>
             </div>
             <div class="item">
                 <button class="btn card" id="card2" data-link="https://example.com/standard">
-                    <span class="tariff-name">Стандартный</span><br>
-                    <span class="tariff-price">$10</span>
+                    <span class="tariff-info">
+                        <span class="tariff-name">Стандартный</span>
+                        <span class="tariff-price">$10</span>
+                    </span>
                 </button>
             </div>
             <div class="item">
                 <button class="btn card" id="card3" data-link="https://example.com/premium">
-                    <span class="tariff-name">Премиум</span><br>
-                    <span class="tariff-price">$20</span>
+                    <span class="tariff-info">
+                        <span class="tariff-name">Премиум</span>
+                        <span class="tariff-price">$20</span>
+                    </span>
                 </button>
             </div>
         </div>
@@ -259,6 +79,7 @@
         let item = "";
         let tariff_name = "";
         let item_price = 0;
+        let payment_type = "";
 
         const tariffButtons = document.querySelectorAll('.btn');
 
@@ -290,3 +111,5 @@
             tg.sendData(JSON.stringify(data));
         });
     </script>
+</body>
+</html>
