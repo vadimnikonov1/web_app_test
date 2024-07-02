@@ -124,19 +124,19 @@
     <div class="container">
         <div class="inner">
             <div class="item">
-                <button class="btn basic" id="btn1" data-link="https://example.com/basic">
+                <button class="btn basic" id="btn1" data-link="https://t.me/$w55lMql6IUT6AAAAtE1uV4XlW70">
                     <span class="tariff-name">Базовый</span><br>
                     <span class="tariff-price">100₽</span>
                 </button>
             </div>
             <div class="item">
-                <button class="btn standard" id="btn2" data-link="https://example.com/standard">
+                <button class="btn standard" id="btn2" data-link="https://t.me/$w55lMql6IUT6AAAAtE1uV4XlW70">
                     <span class="tariff-name">Стандартный</span><br>
                     <span class="tariff-price">200₽</span>
                 </button>
             </div>
             <div class="item">
-                <button class="btn premium" id="btn3" data-link="https://example.com/premium">
+                <button class="btn premium" id="btn3" data-link="https://t.me/$w55lMql6IUT6AAAAtE1uV4XlW70">
                     <span class="tariff-name">Премиум</span><br>
                     <span class="tariff-price">300₽</span>
                 </button>
@@ -160,7 +160,7 @@
 
         tariffButtons.forEach(button => {
             button.addEventListener('click', function() {
-                const link = this.getAttribute('https://t.me/$w55lMql6IUT6AAAAtE1uV4XlW70');
+                const link = this.getAttribute('data-link');
 
                 if (tg.MainButton.isVisible) {
                     tg.MainButton.hide();
