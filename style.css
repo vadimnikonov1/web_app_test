@@ -1,17 +1,17 @@
 body {
     margin: 0;
     padding: 0;
-    font-size: 18px;
+    font-size: 14px;
     color: var(--tg-theme-text-color);
     background: var(--tg-theme-bg-color);
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 80vh;
 }
 
 .container {
-    max-width: 390px;
+    max-width: 240px;
     width: 100%;
 }
 
@@ -45,8 +45,8 @@ body {
     font-weight: 700;
     font-size: 1.2em;
     width: calc(100% - 40px); /* Уменьшил ширину на 40px для учета padding */
-    max-width: 350px;
-    height: 100px;
+    max-width: 240px;
+    height: 80px;
     transition: background 0.2s linear;
     white-space: normal;
 }
