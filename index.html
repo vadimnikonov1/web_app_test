@@ -111,6 +111,85 @@
 <!--</html>-->
 
 
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <link rel="stylesheet" href="style.css">-->
+<!--    <title>Тарифы</title>-->
+<!--    <script src="https://telegram.org/js/telegram-web-app.js"></script>-->
+<!--</head>-->
+<!--<body>-->
+<!--    <div class="container">-->
+<!--        <div class="inner">-->
+<!--            <div class="item">-->
+<!--                <button class="btn basic" id="btn1" data-link="https://t.me/$w55lMql6IUT6AAAAtE1uV4XlW70">-->
+<!--                    <span class="tariff-name">Базовый</span><br>-->
+<!--                    <span class="tariff-price">100₽</span>-->
+<!--                </button>-->
+<!--            </div>-->
+<!--            <div class="item">-->
+<!--                <button class="btn standard" id="btn2" data-link="https://t.me/$w55lMql6IUT6AAAAtE1uV4XlW70">-->
+<!--                    <span class="tariff-name">Стандартный</span><br>-->
+<!--                    <span class="tariff-price">200₽</span>-->
+<!--                </button>-->
+<!--            </div>-->
+<!--            <div class="item">-->
+<!--                <button class="btn premium" id="btn3" data-link="https://t.me/$w55lMql6IUT6AAAAtE1uV4XlW70">-->
+<!--                    <span class="tariff-name">Премиум</span><br>-->
+<!--                    <span class="tariff-price">300₽</span>-->
+<!--                </button>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="usercard" id="usercard">-->
+<!--        &lt;!&ndash; User card content &ndash;&gt;-->
+<!--    </div>-->
+<!--    <script>-->
+<!--        let tg = window.Telegram.WebApp;-->
+
+<!--        tg.MainButton.textColor = '#FFFFFF';-->
+<!--        tg.MainButton.color = '#2cab37';-->
+
+<!--        let item = "";-->
+<!--        let tariff_name = "";-->
+<!--        let item_price = 0;-->
+
+<!--        const tariffButtons = document.querySelectorAll('.btn');-->
+
+<!--        tariffButtons.forEach(button => {-->
+<!--            button.addEventListener('click', function() {-->
+<!--                const link = this.getAttribute('data-link');-->
+
+<!--                if (tg.MainButton.isVisible) {-->
+<!--                    tg.MainButton.hide();-->
+<!--                } else {-->
+<!--                    tg.MainButton.setText(`Вы выбрали тариф ${this.querySelector('.tariff-name').textContent}!`);-->
+<!--                    item = this.id.replace('btn', '');-->
+<!--                    item_price = parseInt(this.querySelector('.tariff-price').textContent) * 1000; // Преобразуем цену в копейки-->
+<!--                    tariff_name = `Тариф "${this.querySelector('.tariff-name').textContent}"`;-->
+<!--                    tg.MainButton.show();-->
+<!--                }-->
+
+<!--                tg.onEvent('mainButtonClicked', () => {-->
+<!--                    window.open(link, '_blank'); // Открываем ссылку в новой вкладке-->
+<!--                });-->
+<!--            });-->
+<!--        });-->
+
+<!--        Telegram.WebApp.onEvent("mainButtonClicked", () => {-->
+<!--            let data = {-->
+<!--                item_id: item,-->
+<!--                tariff: tariff_name-->
+<!--            };-->
+<!--            // tg.sendData(JSON.stringify(data));-->
+<!--        });-->
+<!--    </script>-->
+<!--</body>-->
+<!--</html>-->
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -122,30 +201,55 @@
 </head>
 <body>
     <div class="container">
+        <h2>Покупка через Telegram Stars</h2>
+        <div class="inner">
+             <div class="item">
+                <button class="btn card" id="stars1" data-link="https://example.com/basic">
+                    <span class="tariff-name">Базовый</span><br>
+                    <span class="tariff-price">1⭐</span>
+                </button>
+            </div>
+            <div class="item">
+                <button class="btn card" id="stars2" data-link="https://example.com/standard">
+                    <span class="tariff-name">Стандартный</span><br>
+                    <span class="tariff-price">2⭐</span>
+                </button>
+            </div>
+            <div class="item">
+                <button class="btn card" id="stars3" data-link="https://example.com/premium">
+                    <span class="tariff-name">Премиум</span><br>
+                    <span class="tariff-price">3⭐</span>
+                </button>
+            </div>
+        </div>
+
+        <h2>Покупка через банковскую карту</h2>
         <div class="inner">
             <div class="item">
-                <button class="btn basic" id="btn1" data-link="https://t.me/$w55lMql6IUT6AAAAtE1uV4XlW70">
+                <button class="btn card" id="card1" data-link="https://example.com/basic">
                     <span class="tariff-name">Базовый</span><br>
-                    <span class="tariff-price">100₽</span>
+                    <span class="tariff-price">$5</span>
                 </button>
             </div>
             <div class="item">
-                <button class="btn standard" id="btn2" data-link="https://t.me/$w55lMql6IUT6AAAAtE1uV4XlW70">
+                <button class="btn card" id="card2" data-link="https://example.com/standard">
                     <span class="tariff-name">Стандартный</span><br>
-                    <span class="tariff-price">200₽</span>
+                    <span class="tariff-price">$10</span>
                 </button>
             </div>
             <div class="item">
-                <button class="btn premium" id="btn3" data-link="https://t.me/$w55lMql6IUT6AAAAtE1uV4XlW70">
+                <button class="btn card" id="card3" data-link="https://example.com/premium">
                     <span class="tariff-name">Премиум</span><br>
-                    <span class="tariff-price">300₽</span>
+                    <span class="tariff-price">$20</span>
                 </button>
             </div>
         </div>
     </div>
+
     <div class="usercard" id="usercard">
         <!-- User card content -->
     </div>
+
     <script>
         let tg = window.Telegram.WebApp;
 
@@ -160,31 +264,29 @@
 
         tariffButtons.forEach(button => {
             button.addEventListener('click', function() {
-                const link = this.getAttribute('data-link');
+                const tariffName = this.querySelector('.tariff-name').textContent;
+                const tariffPrice = this.querySelector('.tariff-price').textContent;
+                item = this.id.replace('stars', '').replace('card', '');
+                tariff_name = `Тариф "${tariffName}"`;
+                item_price = tariffPrice;
+                payment_type = this.classList.contains('stars') ? 'Telegram Stars' : 'Банковская карта';
 
                 if (tg.MainButton.isVisible) {
                     tg.MainButton.hide();
                 } else {
-                    tg.MainButton.setText(`Вы выбрали тариф ${this.querySelector('.tariff-name').textContent}!`);
-                    item = this.id.replace('btn', '');
-                    item_price = parseInt(this.querySelector('.tariff-price').textContent) * 1000; // Преобразуем цену в копейки
-                    tariff_name = `Тариф "${this.querySelector('.tariff-name').textContent}"`;
+                    tg.MainButton.setText(`Вы выбрали ${tariff_name} за ${item_price}`);
                     tg.MainButton.show();
                 }
-
-                tg.onEvent('mainButtonClicked', () => {
-                    window.open(link, '_blank'); // Открываем ссылку в новой вкладке
-                });
             });
         });
 
-        Telegram.WebApp.onEvent("mainButtonClicked", () => {
+        tg.onEvent('mainButtonClicked', () => {
             let data = {
                 item_id: item,
-                tariff: tariff_name
+                tariff: tariff_name,
+                price: item_price,
+                payment_type: payment_type
             };
-            // tg.sendData(JSON.stringify(data));
+            tg.sendData(JSON.stringify(data));
         });
     </script>
-</body>
-</html>
