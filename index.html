@@ -12,15 +12,15 @@
         <h2>Покупка через Telegram Stars</h2>
         <div class="inner">
              <div class="item">
-                <button class="btn stars" id="stars1" data-link="https://example.com/basic">
+                <button class="btn stars" id="base_by_stars" data-link="https://example.com/basic">
                     <span class="tariff-info">
-                        <span class="tariff-name">Базовый</span>
+                        <span class="tariff-name" >Базовый</span>
                         <span class="tariff-price">1⭐</span>
                     </span>
                 </button>
             </div>
             <div class="item">
-                <button class="btn stars" id="stars2" data-link="https://example.com/standard">
+                <button class="btn stars" id="standard_by_stars" data-link="https://example.com/standard">
                     <span class="tariff-info">
                         <span class="tariff-name">Стандартный</span>
                         <span class="tariff-price">2⭐</span>
@@ -28,7 +28,7 @@
                 </button>
             </div>
             <div class="item">
-                <button class="btn stars" id="stars3" data-link="https://example.com/premium">
+                <button class="btn stars" id="premium_by_stars" data-link="https://example.com/premium">
                     <span class="tariff-info">
                         <span class="tariff-name">Премиум</span>
                         <span class="tariff-price">3⭐</span>
@@ -40,7 +40,7 @@
         <h2>Покупка через банковскую карту</h2>
         <div class="inner">
             <div class="item">
-                <button class="btn card" id="card1" data-link="https://example.com/basic">
+                <button class="btn card" id="base_by_card" data-link="https://example.com/basic">
                     <span class="tariff-info">
                         <span class="tariff-name">Базовый</span>
                         <span class="tariff-price">$5</span>
@@ -48,7 +48,7 @@
                 </button>
             </div>
             <div class="item">
-                <button class="btn card" id="card2" data-link="https://example.com/standard">
+                <button class="btn card" id="standard_by_card" data-link="https://example.com/standard">
                     <span class="tariff-info">
                         <span class="tariff-name">Стандартный</span>
                         <span class="tariff-price">$10</span>
@@ -56,7 +56,7 @@
                 </button>
             </div>
             <div class="item">
-                <button class="btn card" id="card3" data-link="https://example.com/premium">
+                <button class="btn card" id="premium_by_card" data-link="https://example.com/premium">
                     <span class="tariff-info">
                         <span class="tariff-name">Премиум</span>
                         <span class="tariff-price">$20</span>
@@ -80,6 +80,7 @@
         let tariff_name = "";
         let item_price = 0;
         let payment_type = "";
+        let tariff_id = "";
 
         const tariffButtons = document.querySelectorAll('.btn');
 
