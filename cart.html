@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Корзина</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h2>Корзина</h2>
+        <div class="inner" id="cartItems">
+            <!-- Здесь будут отображаться товары в корзине -->
+        </div>
+        <button class="btn" onclick="goBack()">Вернуться к покупкам</button>
+    </div>
+
+    <script>
+        let tg = window.Telegram.WebApp;
+
+        function goBack() {
+            window.location.href = 'index.html';
+        }
+
+        function displayCartItems() {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            let cartItemsElement = document.getElementById('cartItems');
+
+            if (cart.length === 0) {
+                cartItemsElement.innerHTML = '<p>Корзина пуста</p>';
+            } else {
+                cart.forEach(item => {
+                    let itemDiv = document.createElement('div');
+                    itemDiv.classList.add('item');
+                    itemDiv.innerHTML = `
+                        <span class="tariff-info">
+                            <span class="tariff-name">${item.name}</span>
+                            <span class="tariff-price">${item.price}</span>
+                        </span>
+                        <button class="btn remove" onclick="removeFromCart('${item.id}')">Удалить</button>
+                    `;
+                    cartItemsElement.appendChild(itemDiv);
+                });
+            }
+        }
+
+        function removeFromCart(itemId) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart = cart.filter(item => item.id !== itemId);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            displayCartItems();
+        }
+
+        window.onload = displayCartItems;
+
+        tg.onEvent('mainButtonClicked', () => {
+            window.location.href = 'index.html';
+        });
+    </script>
+</body>
+</html>

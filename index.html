@@ -14,7 +14,7 @@
 <!--             <div class="item">-->
 <!--                <button class="btn stars" id="base_by_stars" data-link="https://example.com/basic">-->
 <!--                    <span class="tariff-info">-->
-<!--                        <span class="tariff-name" >Базовый</span>-->
+<!--                        <span class="tariff-name">Базовый</span>-->
 <!--                        <span class="tariff-price">1⭐</span>-->
 <!--                    </span>-->
 <!--                </button>-->
@@ -96,7 +96,7 @@
 <!--                if (tg.MainButton.isVisible) {-->
 <!--                    tg.MainButton.hide();-->
 <!--                } else {-->
-<!--                    tg.MainButton.setText(`Купить ${tariff_name} за ${item_price}`);-->
+<!--                    tg.MainButton.setText(`Посмотреть корзину: ${tariff_name} за ${item_price}`);-->
 <!--                    tg.MainButton.show();-->
 <!--                }-->
 <!--            });-->
@@ -111,9 +111,21 @@
 <!--            };-->
 <!--            tg.sendData(JSON.stringify(data));-->
 <!--        });-->
+
+<!--        tg.onEvent('web_app_data', (data) => {-->
+<!--            const receivedData = JSON.parse(data);-->
+<!--            const paymentLink = receivedData.payment_link;-->
+
+<!--            const selectedButton = document.getElementById(item);-->
+<!--            if (selectedButton) {-->
+<!--                selectedButton.setAttribute('data-link', paymentLink);-->
+<!--                selectedButton.onclick = () => window.location.href = paymentLink;-->
+<!--            }-->
+<!--        });-->
 <!--    </script>-->
 <!--</body>-->
 <!--</html>-->
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -128,8 +140,8 @@
     <div class="container">
         <h2>Покупка через Telegram Stars</h2>
         <div class="inner">
-             <div class="item">
-                <button class="btn stars" id="base_by_stars" data-link="https://example.com/basic">
+            <div class="item">
+                <button class="btn stars" id="base_by_stars" data-link="https://example.com/basic" onclick="addToCart('base_by_stars', 'Базовый', '1⭐')">
                     <span class="tariff-info">
                         <span class="tariff-name">Базовый</span>
                         <span class="tariff-price">1⭐</span>
@@ -137,7 +149,7 @@
                 </button>
             </div>
             <div class="item">
-                <button class="btn stars" id="standard_by_stars" data-link="https://example.com/standard">
+                <button class="btn stars" id="standard_by_stars" data-link="https://example.com/standard" onclick="addToCart('standard_by_stars', 'Стандартный', '2⭐')">
                     <span class="tariff-info">
                         <span class="tariff-name">Стандартный</span>
                         <span class="tariff-price">2⭐</span>
@@ -145,7 +157,7 @@
                 </button>
             </div>
             <div class="item">
-                <button class="btn stars" id="premium_by_stars" data-link="https://example.com/premium">
+                <button class="btn stars" id="premium_by_stars" data-link="https://example.com/premium" onclick="addToCart('premium_by_stars', 'Премиум', '3⭐')">
                     <span class="tariff-info">
                         <span class="tariff-name">Премиум</span>
                         <span class="tariff-price">3⭐</span>
@@ -157,7 +169,7 @@
         <h2>Покупка через банковскую карту</h2>
         <div class="inner">
             <div class="item">
-                <button class="btn card" id="base_by_card" data-link="https://example.com/basic">
+                <button class="btn card" id="base_by_card" data-link="https://example.com/basic" onclick="addToCart('base_by_card', 'Базовый', '$5')">
                     <span class="tariff-info">
                         <span class="tariff-name">Базовый</span>
                         <span class="tariff-price">$5</span>
@@ -165,7 +177,7 @@
                 </button>
             </div>
             <div class="item">
-                <button class="btn card" id="standard_by_card" data-link="https://example.com/standard">
+                <button class="btn card" id="standard_by_card" data-link="https://example.com/standard" onclick="addToCart('standard_by_card', 'Стандартный', '$10')">
                     <span class="tariff-info">
                         <span class="tariff-name">Стандартный</span>
                         <span class="tariff-price">$10</span>
@@ -173,7 +185,7 @@
                 </button>
             </div>
             <div class="item">
-                <button class="btn card" id="premium_by_card" data-link="https://example.com/premium">
+                <button class="btn card" id="premium_by_card" data-link="https://example.com/premium" onclick="addToCart('premium_by_card', 'Премиум', '$20')">
                     <span class="tariff-info">
                         <span class="tariff-name">Премиум</span>
                         <span class="tariff-price">$20</span>
@@ -187,6 +199,7 @@
         <!-- User card content -->
     </div>
 
+    <script src="cart.js"></script>
     <script>
         let tg = window.Telegram.WebApp;
 
@@ -213,20 +226,21 @@
                 if (tg.MainButton.isVisible) {
                     tg.MainButton.hide();
                 } else {
-                    tg.MainButton.setText(`Купить ${tariff_name} за ${item_price}`);
+                    tg.MainButton.setText(`Посмотреть корзину: ${tariff_name} за ${item_price}`);
                     tg.MainButton.show();
                 }
             });
         });
 
         tg.onEvent('mainButtonClicked', () => {
-            let data = {
-                item_id: item,
-                tariff: tariff_name,
-                price: item_price,
-                payment_type: payment_type
-            };
-            tg.sendData(JSON.stringify(data));
+             let data = {
+                 item_id: item,
+                 tariff: tariff_name,
+                 price: item_price,
+                 payment_type: payment_type
+             };
+             tg.sendData(JSON.stringify(data));
+             viewCart();
         });
 
         tg.onEvent('web_app_data', (data) => {
