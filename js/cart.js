@@ -1,19 +1,25 @@
-// Функция для добавления товара в корзину
-function addToCart(itemId, itemName, itemPrice) {
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
-    let item = {
-        id: itemId,
-        name: itemName,
-        price: itemPrice
-    };
-    cart.push(item);
-    localStorage.setItem('cart', JSON.stringify(cart));
-    alert(`${itemName} добавлен в корзину`);
-}
+// Получаем объект WebApp
+let tg = window.Telegram.WebApp;
 
-// Функция для перехода к корзине
-function viewCart() {
-    window.location.href = 'cart.html';
+// Функция для отображения товаров в корзине
+function displayCartItems() {
+    let cart = JSON.parse(localStorage.getItem('cart')) || {};
+    let cartItemsElement = document.getElementById('cartItems');
+    cartItemsElement.innerHTML = ''; // Очистить предыдущие элементы
+
+    if (cart.tariff) {
+        let itemDiv = document.createElement('div');
+        itemDiv.classList.add('item');
+        itemDiv.innerHTML = `
+            <span class="tariff-info">
+                <span class="tariff-name">${cart.tariff}</span>
+                <span class="tariff-price">${cart.price}</span>
+            </span>
+        `;
+        cartItemsElement.appendChild(itemDiv);
+    } else {
+        cartItemsElement.innerHTML = '<p>Корзина пуста</p>';
+    }
 }
 
 // Функция для возврата к покупкам
@@ -21,37 +27,29 @@ function goBack() {
     window.location.href = 'index.html';
 }
 
-// Функция для отображения товаров в корзине на странице cart.html
-function displayCartItems() {
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
-    let cartItemsElement = document.getElementById('cartItems');
-    cartItemsElement.innerHTML = ''; // Очистить предыдущие элементы
-
-    if (cart.length === 0) {
-        cartItemsElement.innerHTML = '<p>Корзина пуста</p>';
-    } else {
-        cart.forEach(item => {
-            let itemDiv = document.createElement('div');
-            itemDiv.classList.add('item');
-            itemDiv.innerHTML = `
-                <span class="tariff-info">
-                    <span class="tariff-name">${item.name}</span>
-                    <span class="tariff-price">${item.price}</span>
-                </span>
-                <button class="btn remove" onclick="removeFromCart('${item.id}')">Удалить</button>
-            `;
-            cartItemsElement.appendChild(itemDiv);
-        });
+// Функция для отправки данных в бот при нажатии на кнопку "Мин. кнопка"
+function sendToBot() {
+    let cart = JSON.parse(localStorage.getItem('cart'));
+    if (cart) {
+        let data = {
+            item_id: cart.item_id,
+            tariff: cart.tariff,
+            price: cart.price,
+            payment_type: cart.payment_type
+        };
+        tg.sendData(JSON.stringify(data));
     }
 }
 
-// Функция для удаления товара из корзины
-function removeFromCart(itemId) {
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
-    cart = cart.filter(item => item.id !== itemId);
-    localStorage.setItem('cart', JSON.stringify(cart));
-    displayCartItems();
-}
+// Настройка кнопки mainButton
+tg.MainButton.setText("Отправить в бот");
+tg.MainButton.show();
+
+tg.onEvent('mainButtonClicked', () => {
+    sendToBot();
+    // Можно добавить опциональное действие после отправки данных
+    alert('Данные отправлены в бот!');
+});
 
 // Вызываем функцию displayCartItems, если это страница корзины
 if (window.location.pathname.endsWith('cart.html')) {

@@ -233,6 +233,7 @@
         });
 
         tg.onEvent('mainButtonClicked', () => {
+            viewCart();
             let data = {
                 item_id: item,
                 tariff: tariff_name,
@@ -241,10 +242,6 @@
             };
             tg.sendData(JSON.stringify(data));
 
-            // Переход на другую страницу (не в Telegram, а на веб-приложении)
-            setTimeout(() => {
-                window.location.href = 'cart.html'; // Или другой URL, куда нужно перенаправить
-            }, 1000);
         });
 
         tg.onEvent('web_app_data', (data) => {
