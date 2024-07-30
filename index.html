@@ -12,7 +12,7 @@
         <h2>Покупка через Telegram Stars</h2>
         <div class="inner">
             <div class="item">
-                <button class="btn stars" id="base_by_stars" data-link="https://example.com/basic">
+                <button class="btn stars" id="base_by_stars" data-link="https://example.com/basic" onclick="addToCart('base_by_stars', 'Тариф Базовый', '1⭐')">
                     <span class="tariff-info">
                         <span class="tariff-name">Базовый</span>
                         <span class="tariff-price">1⭐</span>
@@ -20,7 +20,7 @@
                 </button>
             </div>
             <div class="item">
-                <button class="btn stars" id="standard_by_stars" data-link="https://example.com/standard">
+                <button class="btn stars" id="standard_by_stars" data-link="https://example.com/standard" onclick="addToCart('standard_by_stars', 'Тариф Стандартный', '2⭐')">
                     <span class="tariff-info">
                         <span class="tariff-name">Стандартный</span>
                         <span class="tariff-price">2⭐</span>
@@ -28,7 +28,7 @@
                 </button>
             </div>
             <div class="item">
-                <button class="btn stars" id="premium_by_stars" data-link="https://example.com/premium">
+                <button class="btn stars" id="premium_by_stars" data-link="https://example.com/premium" onclick="addToCart('premium_by_stars', 'Тариф Премиум', '3⭐')">
                     <span class="tariff-info">
                         <span class="tariff-name">Премиум</span>
                         <span class="tariff-price">3⭐</span>
@@ -40,7 +40,7 @@
         <h2>Покупка через банковскую карту</h2>
         <div class="inner">
             <div class="item">
-                <button class="btn card" id="base_by_card" data-link="https://example.com/basic">
+                <button class="btn card" id="base_by_card" data-link="https://example.com/basic" onclick="addToCart('base_by_card', 'Тариф Базовый', '$5')">
                     <span class="tariff-info">
                         <span class="tariff-name">Базовый</span>
                         <span class="tariff-price">$5</span>
@@ -48,7 +48,7 @@
                 </button>
             </div>
             <div class="item">
-                <button class="btn card" id="standard_by_card" data-link="https://example.com/standard">
+                <button class="btn card" id="standard_by_card" data-link="https://example.com/standard" onclick="addToCart('standard_by_card', 'Тариф Стандартный', '$10')">
                     <span class="tariff-info">
                         <span class="tariff-name">Стандартный</span>
                         <span class="tariff-price">$10</span>
@@ -56,7 +56,7 @@
                 </button>
             </div>
             <div class="item">
-                <button class="btn card" id="premium_by_card" data-link="https://example.com/premium">
+                <button class="btn card" id="premium_by_card" data-link="https://example.com/premium" onclick="addToCart('premium_by_card', 'Тариф Премиум', '$20')">
                     <span class="tariff-info">
                         <span class="tariff-name">Премиум</span>
                         <span class="tariff-price">$20</span>
@@ -64,10 +64,13 @@
                 </button>
             </div>
         </div>
-
-        <button class="btn" onclick="viewCart()">Посмотреть корзину</button>
     </div>
 
+    <div class="usercard" id="usercard">
+        <!-- User card content -->
+    </div>
+
+    <script src="js/cart.js"></script>
     <script>
         let tg = window.Telegram.WebApp;
 
@@ -109,6 +112,17 @@
 
         tg.onEvent('mainButtonClicked', () => {
             viewCart();
+        });
+
+        tg.onEvent('web_app_data', (data) => {
+            const receivedData = JSON.parse(data);
+            const paymentLink = receivedData.payment_link;
+
+            const selectedButton = document.getElementById(item);
+            if (selectedButton) {
+                selectedButton.setAttribute('data-link', paymentLink);
+                selectedButton.onclick = () => window.location.href = paymentLink;
+            }
         });
     </script>
 </body>
