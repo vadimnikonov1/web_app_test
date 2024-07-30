@@ -233,14 +233,14 @@
         });
 
         tg.onEvent('mainButtonClicked', () => {
-             let data = {
-                 item_id: item,
-                 tariff: tariff_name,
-                 price: item_price,
-                 payment_type: payment_type
-             };
-             tg.sendData(JSON.stringify(data));
-             viewCart();
+            viewCart();
+            let data = {
+                item_id: item,
+                tariff: tariff_name,
+                price: item_price,
+                payment_type: payment_type
+            };
+            tg.sendData(JSON.stringify(data));
         });
 
         tg.onEvent('web_app_data', (data) => {
