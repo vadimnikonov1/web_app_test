@@ -25,6 +25,7 @@ function goBack() {
 function displayCartItems() {
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
     let cartItemsElement = document.getElementById('cartItems');
+    cartItemsElement.innerHTML = ''; // Очистить предыдущие элементы
 
     if (cart.length === 0) {
         cartItemsElement.innerHTML = '<p>Корзина пуста</p>';

@@ -7,7 +7,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh; /* Изменил высоту контейнера на 100vh для полного заполнения экрана */
+    min-height: 100vh;
 }
 
 .container {
@@ -22,15 +22,21 @@ body {
     gap: 20px;
     width: 100%;
     align-items: center;
-    text-align: center; /* Добавлено центрирование для текста внутри .inner */
+    text-align: center;
 }
 
 .item {
     text-align: center;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     width: 100%;
+    background: #f8f8f8;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
 }
 
 .btn {
@@ -61,8 +67,8 @@ body {
 }
 
 .section-title {
-    font-size: 1.2em; /* Увеличил размер заголовка */
-    margin-bottom: 10px; /* Добавил отступ снизу для разделения заголовка от кнопок */
+    font-size: 1.2em;
+    margin-bottom: 10px;
 }
 
 .tariff-info {
@@ -75,4 +81,9 @@ body {
 
 .tariff-name, .tariff-price {
     display: block;
+}
+
+.btn.remove {
+    background: red;
+    margin-top: 10px;
 }
