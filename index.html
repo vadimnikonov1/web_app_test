@@ -108,23 +108,8 @@
         });
 
         tg.onEvent('mainButtonClicked', () => {
-            let data = {
-                item_id: item,
-                tariff: tariff_name,
-                price: item_price,
-                payment_type: payment_type
-            };
-            tg.sendData(JSON.stringify(data));
-
-            // Переход на страницу корзины
-            setTimeout(() => {
-                window.location.href = 'cart.html';
-            }, 1000); // Задержка в 1 секунду для обеспечения отправки данных
+            viewCart()
         });
-
-        function viewCart() {
-            window.location.href = 'cart.html';
-        }
     </script>
 </body>
 </html>
